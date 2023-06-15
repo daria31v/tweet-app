@@ -13,7 +13,7 @@ export const App = () => {
         <Route index element={<Home />} />
         <Route path="tweets" element={<Tweets />} />
         </Route>
-      <Route path="*"  element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
