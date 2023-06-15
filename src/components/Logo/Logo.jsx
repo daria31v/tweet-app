@@ -1,6 +1,10 @@
+import { LogoIcon, BoxLogo } from './Logo.styled';
+import logo from 'images/logo.png';
 
 export const Logo = () => {
-    return (
-        <img src="src/images/logo.png" alt="logo" />
-    )
-}
+  return (
+    <BoxLogo>
+      <LogoIcon src={logo} alt="logo" width="76" height="22"></LogoIcon>
+    </BoxLogo>
+  );
+};
