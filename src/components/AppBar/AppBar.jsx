@@ -1,17 +1,22 @@
-import { Link } from 'react-router-dom';
-import { Logo } from '../Logo/Logo';
+import { Logo } from "../Logo/Logo";
+// import { Link } from "react-router-dom";
+
+import { Container, Section, Nav, Cloud, Box } from "./AppBar.styled";
+
 export const AppBar = () => {
   return (
-    <header>
-      <nav>
-        <Link to="/" end='true'>
-          HOME
-        </Link>
-        <Link to="/tweets">Tweets</Link>
-      </nav>
-      <Link to="/" end='true'>
-        <Logo />
-      </Link>
-    </header>
+    <Container>
+      <Section>
+        <Nav>
+          <Cloud to="/">
+            <Logo />
+          </Cloud>
+          <Box>
+            <Cloud to="/">Home</Cloud>
+            <Cloud to="/tweets">Tweets</Cloud>
+          </Box>
+        </Nav>
+      </Section>
+    </Container>
   );
 };

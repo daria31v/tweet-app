@@ -2,13 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   width: 100%;
+  
 `;
 
 export const Box = styled.div`
   display: block;
-  /* text-align: center; */
   width: 380px;
   height: 460px;
   color: #ebd8ff;
@@ -19,6 +22,9 @@ export const Box = styled.div`
     #5736a3 54.28%,
     #4b2a99 78.99%
   );
+  :hover{
+    box-shadow: 5px 0 2px #5CD3A8 
+  } 
 `;
 
 export const BoxLogo = styled.div`
@@ -70,7 +76,6 @@ left: 0;
 top: -40px;
 `;
 
-
 export const Name = styled.span`
   font-size: 14px;
   font-weight: 500;
@@ -105,15 +110,19 @@ export const Button = styled.button`
   width: 196px;
   height: 50px;
   padding: 14px 28px;
-  background: #ebd8ff;
+  background-color: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.22;
   text-transform: uppercase;
-  color: #373737;
   border-radius: 10px;
+  :hover,
+  :focus,
+  :active{
+    background-color: #5CD3A8;
+  }
 `;
 
 export const Decor = styled.img`

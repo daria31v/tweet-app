@@ -1,12 +1,13 @@
 // import { SearchBox } from '../../components/SearchBox/SearchBox';
 // import { useState, useEffect } from 'react';
-import { TweetsList } from '../components/TweetsList/TweetsList';
+import { TweetsList } from '../../components/TweetsList/TweetsList';
 // import { useSearchParams } from 'react-router-dom';
 // import { getSearchMovie } from '../../Service/apiThemovieBb';
 import { useLocation } from 'react-router-dom';
-import {BackLink} from '../components/BackLink/BackLink';
+import {BackLink} from '../../components/BackLink/BackLink';
+import { Container, Section, Title, BoxTweets } from './Tweets.styled';
 
-import users from '../serves/users.json'
+import users from '../../serves/users.json';
 
 const Tweets = () => {
 //   const [query, setQuery] = useState('');
@@ -34,16 +35,23 @@ const backLinkHref = location.state?.from ?? '/';
 //   };
 
   return (
-    <>
-    <BackLink to={backLinkHref}/>
+    <Container>
+      <Section>
+        <BoxTweets>
+          <BackLink to={backLinkHref}/>
       {/* <SearchBox
         value={query}
         onChange={handleChange}
         onSubmit={handleSubmitForm}
       /> */}
-      <h2>TWEETS LIST</h2>
+      <Title>TWEETS OUR USERS</Title>
+        </BoxTweets>
+        
+      
       <TweetsList tweets={users} />
-    </>
+
+      </Section>    
+    </Container>
   );
 };
 

@@ -1,34 +1,12 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: block;
-  margin-top: 20px;
- 
-`;
-
-export const CardWrapper = styled.div`
+export const WrapperTweetsList = styled.div`
   display: flex;
   justify-items: center;
   align-items: center;
-  color: tomato;
-  > a {
-    text-decoration: none;
-  }
-  :hover {
-    border-bottom: 1px solid tomato;
-    border-top: 1px solid tomato;  
-  }
+  :hover{
+    text-shadow: 2px 0 2px #7d5bcd, 0 1px 5px #5736a3a6, -1px 0 5px #7d5bcd,
+    0 -1px 2px #5736a3a6;
+  }  
 `;
 
-export const MoviesTitle = styled.h3`
-  padding: 4px;
-  margin-top: 8px;
-  margin-bottom: 0;
-  color: black;
-  font-size: 16px;
-  :hover {
-    color: tomato;
-    text-transform: uppercase;
-    
-  }
-`;

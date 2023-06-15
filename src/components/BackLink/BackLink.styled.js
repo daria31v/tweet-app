@@ -2,17 +2,17 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 export const StyledLink = styled(Link)`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 4px;
   padding: 8px 0;
-  color: black;
+  margin-right: auto;
+  color:  #EBD8FF;
   text-decoration: none;
   font-weight: 500;
   text-transform: uppercase;
-  margin-bottom: 10px;
-
-  :hover {
-    color: orangered;
+  :hover,
+  :focus {
+    color: #edbc2b;;
   }
 `;
