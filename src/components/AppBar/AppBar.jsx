@@ -4,12 +4,12 @@ export const AppBar = () => {
   return (
     <header>
       <nav>
-        <Link to="/" end>
+        <Link to="/" end='true'>
           HOME
         </Link>
         <Link to="/tweets">Tweets</Link>
       </nav>
-      <Link to="/" end>
+      <Link to="/" end='true'>
         <Logo />
       </Link>
     </header>

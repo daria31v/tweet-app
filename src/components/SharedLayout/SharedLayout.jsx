@@ -4,11 +4,11 @@ import { AppBar } from "../AppBar/AppBar";
 
 export const SharedLayout = () => {
   return (
-    <container>
+    <section>
       <AppBar />
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </container>
+    </section>
   );
 };

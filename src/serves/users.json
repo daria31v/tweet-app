@@ -1,0 +1,14 @@
+[{
+    "user": "Elon Mask",
+    "tweets": 888,
+    "followers": 1000000,
+    "avatar": "cat1.png",
+    "id": 1
+},
+{
+    "user": "Helena Gomez",
+    "tweets": 4596,
+    "followers": 31000,
+    "avatar": "cat2.png",
+    "id": 2
+}]
