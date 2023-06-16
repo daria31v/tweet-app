@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useEffect } from "react";
 // import PropTypes from "prop-types";
 import {
   Container,
@@ -14,7 +14,7 @@ import {
   Decor,
   BoxUser,
   Name,
-  BoxName,
+  BoxName
 } from "./TweetCard.styled";
 // import users from "../../serves/users.json";
 import { Logo } from "components/Logo/Logo";
@@ -22,27 +22,41 @@ import { Avatar } from "../Avatar/Avatar";
 import picture from "../../images/picture.png";
 import decor from "images/decor.png";
 // import avatar from "images/avatar_default.png";
-import { getAllTweets } from "serves/api";
+import { fetchAllTweets } from "serves/api";
 
 export const TweetCard = () => {
   const [users, setUsers] = useState([]);
   const [isFollower, setFollower] = useState(false);
-  const tweets = users;
+  // const [followers, setFollowers] = useState();
+  
 
-   useEffect(() => {
-   getAllTweets().then(setUsers);
+useEffect(  () => {
+    fetchAllTweets().then(setUsers);
   }, []);
 
-  const handleChange = () => {
-    setFollower(true)
-  }
 
+  useEffect(() => {
+    document.p = `${users.followers} FOLLOWERS`;
+  });
+
+
+
+
+
+  const handleChange = () => {
+    if (!isFollower) {
+      setFollower(true);
+    } else {
+      setFollower(false);
+    }
+  };
+  
 
   return (
     <Container>
-      {tweets.map((tweet) => {
+      {users.map(user => {
         return (
-          <Box key={tweet.id}>
+          <Box key={user.id}>
             <BoxLogo>
               <Logo />
             </BoxLogo>
@@ -57,20 +71,24 @@ export const TweetCard = () => {
             <CardWrapper>
               <BoxUser>
                 <BoxAvatar>
-                  <Avatar avatar={tweet.avatar} />
+                  <Avatar avatar={user.avatar} />
                 </BoxAvatar>
                 <Decor src={decor} alt="decor" width="380" height="8"></Decor>
                 <BoxName>
-                  <Name>{tweet.user}</Name>
+                  <Name>{user.user}</Name>
                 </BoxName>
                 <BoxCard>
                   <ul>
-                    <Card>{tweet.tweets} TWEETS</Card>
-                    <Card>{tweet.followers} FOLLOWERS</Card>
+                    <Card>{user.tweets} TWEETS</Card>
+                    <Card >
+                      {user.followers} FOLLOWERS
+                    </Card>
                   </ul>
                 </BoxCard>
                 <BoxBtn>
-                  <Button type="button" onClick={handleChange}>{!isFollower && 'Follow' || isFollower && 'Following'}</Button>
+                  <Button id={user.id} type="button" onClick={handleChange} onChange={() => setUsers(users.followers + 1)}>
+                    {isFollower ? "Following" : "Follow"}
+                  </Button>
                 </BoxBtn>
               </BoxUser>
             </CardWrapper>
@@ -80,4 +98,3 @@ export const TweetCard = () => {
     </Container>
   );
 };
-

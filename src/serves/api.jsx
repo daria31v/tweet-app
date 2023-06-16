@@ -2,17 +2,33 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://648c60758620b8bae7eccdd6.mockapi.io/api/';
 
-export const getAllTweets = async () => {
-    const resp = await axios.get(`users/?page=1&limit=3`);
-    // console.log(resp.data);
-    return resp.data;
-  };
 
-  export const putCountFollowers = async () => {
-    const resp = await axios.put(`users/?page=1&limit=3`);
-    // console.log(resp.data);
-    return resp.data;
-  };
+
+
+export async function fetchAllTweets( page = 1) {
+    const response = await axios.get(`users/?page=${page}&limit=3`);
+    console.log(response.data);          
+    return response.data;
+} 
+
+
+
+
+// export const getAllTweets = async () => {
+//     const resp = await axios.get(`users/?page=1&limit=3`);
+//     // console.log(resp.data);
+//     return resp.data;
+//   };
+//   export const getTweetsById = async () => {
+//     const resp = await axios.get("users/:id");
+//     // console.log(resp.data);
+//     return resp.data;
+//   };
+//   export const putCountFollowers = async () => {
+//     const resp = await axios.put(`users/?page=1&limit=3`);
+//     // console.log(resp.data);
+//     return resp.data;
+//   };
 
 // export const fetchAllContacts = createAsyncThunk(
 //   'users/fetchAll',
