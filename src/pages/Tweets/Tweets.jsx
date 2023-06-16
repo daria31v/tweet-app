@@ -1,4 +1,4 @@
-// import { SearchBox } from '../../components/SearchBox/SearchBox';
+import { Dropdown } from '../../components/Dropdown/Dropdown';
 // import { useState, useEffect } from 'react';
 import React from 'react';
 import { TweetsList } from '../../components/TweetsList/TweetsList';
@@ -45,6 +45,7 @@ const backLinkHref = location.state?.from ?? '/';
         onChange={handleChange}
         onSubmit={handleSubmitForm}
       /> */}
+      <Dropdown />
       <Title>TWEETS OUR USERS</Title>
         </BoxTweets>
         
