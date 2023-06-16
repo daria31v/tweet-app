@@ -1,3 +1,4 @@
+import React from 'react';
 import { LogoIcon, BoxLogo } from './Logo.styled';
 import logo from 'images/logo.png';
 

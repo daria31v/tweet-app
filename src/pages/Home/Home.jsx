@@ -1,6 +1,7 @@
 // import { TweetsList } from '../../components/MoviesList/MoviesList';
 // import { getTrendingMovies } from '../../Service/apiThemovieBb';
 // import { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Section, Title, WraperImg, Text } from './Home.styled'
 import picture from '../../images/picture.png';
 

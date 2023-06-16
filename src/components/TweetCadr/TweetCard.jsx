@@ -1,3 +1,5 @@
+import React from "react";
+// import PropTypes from "prop-types";
 import {
   Container,
   Box,
@@ -46,14 +48,16 @@ export const TweetCard = () => {
                 <BoxAvatar>
                   <Avatar avatar={avatar} />
                 </BoxAvatar>
-                
+
                 <Decor src={decor} alt="decor" width="380" height="8"></Decor>
                 <BoxName>
                   <Name>{tweet.user}</Name>
                 </BoxName>
                 <BoxCard>
-                  <Card>{tweet.tweets} TWEETS</Card>
-                  <Card>{tweet.followers} FOLLOWERS</Card>
+                  <ul>
+                    <Card>{tweet.tweets} TWEETS</Card>
+                    <Card>{tweet.followers} FOLLOWERS</Card>
+                  </ul>
                 </BoxCard>
                 <BoxBtn>
                   <Button type="button">Follow</Button>
@@ -66,3 +70,4 @@ export const TweetCard = () => {
     </Container>
   );
 };
+

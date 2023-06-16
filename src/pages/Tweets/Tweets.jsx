@@ -1,5 +1,6 @@
 // import { SearchBox } from '../../components/SearchBox/SearchBox';
 // import { useState, useEffect } from 'react';
+import React from 'react';
 import { TweetsList } from '../../components/TweetsList/TweetsList';
 // import { useSearchParams } from 'react-router-dom';
 // import { getSearchMovie } from '../../Service/apiThemovieBb';

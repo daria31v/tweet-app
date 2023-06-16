@@ -68,7 +68,7 @@ export const BoxAvatar = styled.div`
   border-radius: 80px;
 `;
 export const BoxUser = styled.div`
-  
+  margin: 0;
 `;
 export const BoxName = styled.div`
 position: relative;

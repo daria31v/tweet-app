@@ -1,4 +1,5 @@
 import { Logo } from "../Logo/Logo";
+import React from 'react';
 // import { Link } from "react-router-dom";
 
 import { Container, Section, Nav, Cloud, Box } from "./AppBar.styled";
