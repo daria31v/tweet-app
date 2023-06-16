@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktweets_app=self.webpackChunktweets_app||[]).push([[805],{805:function(e,s,t){t.r(s);var n=t(87),r=t(184);s.default=function(){return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)("h1",{children:"No such page exists!"}),(0,r.jsx)(n.rU,{to:"/",children:"Home"})]})}}}]);
-//# sourceMappingURL=805.0e5ec9a9.chunk.js.map
