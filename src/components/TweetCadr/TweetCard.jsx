@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 // import PropTypes from "prop-types";
 import {
   Container,
@@ -16,16 +16,21 @@ import {
   Name,
   BoxName,
 } from "./TweetCard.styled";
-import users from "../../serves/users.json";
+// import users from "../../serves/users.json";
 import { Logo } from "components/Logo/Logo";
 import { Avatar } from "../Avatar/Avatar";
 import picture from "../../images/picture.png";
 import decor from "images/decor.png";
-import avatar from "images/avatar_default.png";
+// import avatar from "images/avatar_default.png";
+import { getAllTweets } from "serves/api";
 
 export const TweetCard = () => {
-  // console.log(data);
+  const [users, setUsers] = useState([]);
   const tweets = users;
+
+   useEffect(() => {
+   getAllTweets().then(setUsers);
+  }, []);
 
   return (
     <Container>
@@ -46,9 +51,8 @@ export const TweetCard = () => {
             <CardWrapper>
               <BoxUser>
                 <BoxAvatar>
-                  <Avatar avatar={avatar} />
+                  <Avatar avatar={tweet.avatar} />
                 </BoxAvatar>
-
                 <Decor src={decor} alt="decor" width="380" height="8"></Decor>
                 <BoxName>
                   <Name>{tweet.user}</Name>
