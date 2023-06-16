@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+console.log(React.version);
 import PropTypes from "prop-types";
 import { HiArrowLeft } from 'react-icons/hi';
 import { StyledLink } from './BackLink.styled';
