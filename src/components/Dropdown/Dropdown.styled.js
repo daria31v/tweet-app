@@ -13,7 +13,7 @@ export const DropdownBtn = styled.button`
   border: 2px solid #a58ae5;
   border-radius: 10px;
   height: 10px;
-  width: 80px;
+  width: 100px;
   padding: 25px;
   text-transform: uppercase;
   background: none;
@@ -22,6 +22,7 @@ export const DropdownBtn = styled.button`
     inset 0px 4.39163px 3.29372px #fbf8ff;
   color: #ebd8ff;
   font-size: 14px;
+  cursor: pointer;
   :hover,
   :focus,
   &.active {
@@ -48,5 +49,5 @@ export const Content = styled.a`
   :hover {
     background-color: #fbf8ff;
     border-radius: 10px;
-    };  
+  };
 `;

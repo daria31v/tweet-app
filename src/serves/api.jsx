@@ -8,6 +8,12 @@ export const getAllTweets = async () => {
     return resp.data;
   };
 
+  export const putCountFollowers = async () => {
+    const resp = await axios.put(`users/?page=1&limit=3`);
+    // console.log(resp.data);
+    return resp.data;
+  };
+
 // export const fetchAllContacts = createAsyncThunk(
 //   'users/fetchAll',
 //   async (_, thunkAPI) => {

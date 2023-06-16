@@ -26,11 +26,17 @@ import { getAllTweets } from "serves/api";
 
 export const TweetCard = () => {
   const [users, setUsers] = useState([]);
+  const [isFollower, setFollower] = useState(false);
   const tweets = users;
 
    useEffect(() => {
    getAllTweets().then(setUsers);
   }, []);
+
+  const handleChange = () => {
+    setFollower(true)
+  }
+
 
   return (
     <Container>
@@ -64,7 +70,7 @@ export const TweetCard = () => {
                   </ul>
                 </BoxCard>
                 <BoxBtn>
-                  <Button type="button">Follow</Button>
+                  <Button type="button" onClick={handleChange}>{!isFollower && 'Follow' || isFollower && 'Following'}</Button>
                 </BoxBtn>
               </BoxUser>
             </CardWrapper>
