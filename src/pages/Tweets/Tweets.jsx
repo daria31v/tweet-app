@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import { Dropdown } from "../../components/Dropdown/Dropdown";
-import { useState, useEffect} from "react";
-import React from "react";
+import { useSelector } from "react-redux";
 import { TweetsList } from "../../components/TweetsList/TweetsList";
-// import { useSearchParams } from 'react-router-dom';
-// import { getSearchMovie } from '../../Service/apiThemovieBb';
-import { useLocation, useParams } from "react-router-dom";
+import { selectIsLoading, selectError } from "../../redux/selectors";
+import { useLocation } from "react-router-dom";
 import { BackLink } from "../../components/BackLink/BackLink";
-import { fetchAllTweets } from "../../serves/api";
+import { fetchAllTweets } from "../../redux/operation";
+import { useDispatch } from "react-redux";
 import {
   Container,
   Section,
@@ -17,47 +17,48 @@ import {
 } from "./Tweets.styled";
 
 const Tweets = () => {
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
-  const [users, setUsers] = useState([]);
-  const [page, setPage] = (1);
+
+  
+  // const [page, setPage] = (1);
   // const [searchParams] = useSearchParams();
   // const page = searchParams.get();
- console.log(page);
-
+  //  console.log(page);
 
   // const {page} = useParams();
   // const [isLoading, setIsLoading] = useState(false);
   // const [totalImage, setTotalImage] = useState(0);
   // console.log(users);
- 
-  useEffect(() => {
-    const handleFetchTweets = async (page) => {      
-      try {
-        // setIsLoading(true);
-        const data =  fetchAllTweets();
-        console.log(data);
-        const result = data;
-        console.log(result);
-        if (!result.length) {
-          alert("According to the result of the request, there are no photos!");
-          return;
-        }
-        setUsers(prevUsers =>
-          page === 1 ? [...result] : [...prevUsers, ...result]
-        );
-        // setTotalImage(data.totalHits);
-      } catch (error) {
-        alert("💥SOMETHING WENT WRONG! TRY LATER.");
-      } finally {
-        // setIsLoading(false);
-      }
-    };
-    if (!page) {
-      return;
-    }
 
-  }, [page]);
+  // useEffect(() => {
+  //   const handleFetchTweets = async page => {
+  //     try {
+        // setIsLoading(true);
+        // const data = fetchAllTweets();
+        // console.log(data);
+        // const result = data;
+        // console.log(result);
+        // if (!result.length) {
+        //   alert("According to the result of the request, there are no photos!");
+        //   return;
+        // }
+        // setUsers(prevUsers =>
+        //   page === 1 ? [...result] : [...prevUsers, ...result]
+        // );
+        // setTotalImage(data.totalHits);
+      // } catch (error) {
+      //   alert("💥SOMETHING WENT WRONG! TRY LATER.");
+      // } finally {
+        // setIsLoading(false);
+    //   }
+    // };
+    // if (!page) {
+    //   return;
+    // }
+  // }, []);
 
   // useEffect(async () => {
   //   try {
@@ -72,13 +73,10 @@ const Tweets = () => {
   //   }
   // }, [page]);
 
-
-
-
-  const handleLoadMore = () => {   
-    setPage(prevPage => prevPage + 1);
-    // console.log(setPage);
-  };
+  // const handleLoadMore = () => {
+  //   setPage(prevPage => prevPage + 1);
+  //   // console.log(setPage);
+  // };
 
   //  const handleSubmit = ()=> {
   //   // setQuery(query);
@@ -94,10 +92,17 @@ const Tweets = () => {
           <Dropdown />
           <Title>TWEETS OUR USERS</Title>
         </BoxTweets>
-
-        <TweetsList  />
-        <LoadMore type="button" id="load_more" 
-        onClick={handleLoadMore}
+        {isLoading && !error && (
+          <h3>Please waite the request in progress...🐌</h3>
+        )}
+        {error && !isLoading && (
+          <h3>Something went wrong... ♫ ♫ ♫ Try later ♫ ♫ ♫</h3>
+        )}
+        <TweetsList/>
+        <LoadMore
+          type="button"
+          id="load_more"
+          // onClick={handleLoadMore}
         >
           Load More
         </LoadMore>

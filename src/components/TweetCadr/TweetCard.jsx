@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import PropTypes from "prop-types";
 import {
   Container,
@@ -22,35 +22,24 @@ import { Avatar } from "../Avatar/Avatar";
 import picture from "../../images/picture.png";
 import decor from "images/decor.png";
 // import avatar from "images/avatar_default.png";
-import { fetchAllTweets } from "serves/api";
+import { selectAllTweets } from "redux/selectors";
+import { useSelector } from "react-redux";
 
 export const TweetCard = () => {
-  const [users, setUsers] = useState([]);
   const [isFollower, setFollower] = useState(false);
   // const [followers, setFollowers] = useState();
-  
-
-useEffect(  () => {
-    fetchAllTweets().then(setUsers);
-  }, []);
-
-
-  useEffect(() => {
-    document.p = `${users.followers} FOLLOWERS`;
-  });
-
-
-
-
-
+  const users = useSelector(selectAllTweets);
+  // useEffect(() => {
+  //   document.p = `${users.followers} FOLLOWERS`;
+  // });
+//  console.log(users);
   const handleChange = () => {
     if (!isFollower) {
       setFollower(true);
     } else {
       setFollower(false);
     }
-  };
-  
+  };  
 
   return (
     <Container>
@@ -86,7 +75,7 @@ useEffect(  () => {
                   </ul>
                 </BoxCard>
                 <BoxBtn>
-                  <Button id={user.id} type="button" onClick={handleChange} onChange={() => setUsers(users.followers + 1)}>
+                  <Button id={user.id} type="button" onClick={handleChange} >
                     {isFollower ? "Following" : "Follow"}
                   </Button>
                 </BoxBtn>
