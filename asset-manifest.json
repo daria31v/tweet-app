@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/tweet-app/static/css/main.9f1ae15e.css",
-    "main.js": "/tweet-app/static/js/main.5491f6cb.js",
-    "static/js/304.1f85e675.chunk.js": "/tweet-app/static/js/304.1f85e675.chunk.js",
-    "static/js/646.f55ff90e.chunk.js": "/tweet-app/static/js/646.f55ff90e.chunk.js",
-    "static/js/256.46d09573.chunk.js": "/tweet-app/static/js/256.46d09573.chunk.js",
-    "static/js/214.93a61267.chunk.js": "/tweet-app/static/js/214.93a61267.chunk.js",
+    "main.js": "/tweet-app/static/js/main.cd565cf5.js",
+    "static/js/304.569066e2.chunk.js": "/tweet-app/static/js/304.569066e2.chunk.js",
+    "static/js/467.7beeb1d6.chunk.js": "/tweet-app/static/js/467.7beeb1d6.chunk.js",
+    "static/js/256.31669e45.chunk.js": "/tweet-app/static/js/256.31669e45.chunk.js",
+    "static/js/336.f55971b4.chunk.js": "/tweet-app/static/js/336.f55971b4.chunk.js",
     "static/media/picture.png": "/tweet-app/static/media/picture.86562350dcaa714a1442.png",
     "index.html": "/tweet-app/index.html",
     "main.9f1ae15e.css.map": "/tweet-app/static/css/main.9f1ae15e.css.map",
-    "main.5491f6cb.js.map": "/tweet-app/static/js/main.5491f6cb.js.map",
-    "304.1f85e675.chunk.js.map": "/tweet-app/static/js/304.1f85e675.chunk.js.map",
-    "646.f55ff90e.chunk.js.map": "/tweet-app/static/js/646.f55ff90e.chunk.js.map",
-    "256.46d09573.chunk.js.map": "/tweet-app/static/js/256.46d09573.chunk.js.map",
-    "214.93a61267.chunk.js.map": "/tweet-app/static/js/214.93a61267.chunk.js.map"
+    "main.cd565cf5.js.map": "/tweet-app/static/js/main.cd565cf5.js.map",
+    "304.569066e2.chunk.js.map": "/tweet-app/static/js/304.569066e2.chunk.js.map",
+    "467.7beeb1d6.chunk.js.map": "/tweet-app/static/js/467.7beeb1d6.chunk.js.map",
+    "256.31669e45.chunk.js.map": "/tweet-app/static/js/256.31669e45.chunk.js.map",
+    "336.f55971b4.chunk.js.map": "/tweet-app/static/js/336.f55971b4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9f1ae15e.css",
-    "static/js/main.5491f6cb.js"
+    "static/js/main.cd565cf5.js"
   ]
 }
