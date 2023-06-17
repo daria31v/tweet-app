@@ -1,21 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { WrapperTweetsList } from "./TweetsList.styled";
+import { Card, ListCards, Wrapper } from "./TweetsList.styled";
 import { TweetCard } from "../TweetCadr/TweetCard";
-import {selectAllTweets} from '../../redux/selectors';
 import { useSelector } from "react-redux";
+import { selectAllTweets } from "redux/selectors";
 
 export const TweetsList = () => {
   const users = useSelector(selectAllTweets);
-
-
+  // console.log(users);
+  
   return (
-    <WrapperTweetsList>
-      <TweetCard users={users}/>
-    </WrapperTweetsList>
+    <Wrapper>
+      <ListCards>
+        {/* {users.map((user) => (
+          <p>{user.user}</p>
+        ))} */}
+        
+            {users.map(user => (
+                <Card key={user.id}>
+                  <TweetCard                   
+                    name={user.user}
+                    tweets={user.tweets}
+                    followers={user.followers}
+                    avatar={user.avatar}
+                    id={user.id}
+                    // user={user}
+                  />
+                </Card>
+              ))}            
+          </ListCards>
+    </Wrapper>
+    
   );
 };
 
 TweetsList.protoType = {
-  tweets: PropTypes.array.isRequired,
+  tweets: PropTypes.array.isRequired
 }.isRequired;

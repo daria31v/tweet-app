@@ -3,42 +3,39 @@ import {
   WrapperDropdown,
   DropdownBtn,
   BoxContentDropdown,
-  Content,
+  Content
 } from "./Dropdown.styled";
+import { selectStatusFilter } from "redux/selectors";
+import {  useSelector, useDispatch } from "react-redux";
+import { setStatusFilter } from "redux/filterSlice";
+import { statusFilters } from "redux/filter";
 
 export const Dropdown = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(selectStatusFilter);
+  
+  const handleFilterChange = filter => dispatch(setStatusFilter(filter));
+
   const [isHidden, setHidden] = useState(true);
   const menuRef = useRef();
 
-  const handleOpen = () => {   
-     setHidden(false)
+  const handleOpen = () => {
+    setHidden(false);
   };
-  const handleClose = () => {   
-    setHidden(true);    
-};
+  const handleClose = () => {
+    setHidden(true);
+  };
 
   useEffect(() => {
     const dropdown = document.querySelector("#myDropdown");
-
-    if (!isHidden){
+    if (!isHidden) {
       dropdown.style.display = "block";
-    } else{
-        dropdown.style.display = "none";
+    } else {
+      dropdown.style.display = "none";
     }
   }, [isHidden]);
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (menuRef.current.contains(e.target)) {
-        setHidden(true);
-      }
-    };
-    document.addEventListener("mousedown", handler);
 
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  }, []);
   return (
     <WrapperDropdown className="dropdown" ref={menuRef}>
       <DropdownBtn onClick={handleOpen} className="dropbtn">
@@ -52,9 +49,27 @@ export const Dropdown = () => {
         toggle={setHidden}
         onClick={handleClose}
       >
-        <Content href="" >Show All</Content>
-        <Content href="">Follow</Content>
-        <Content href="">Following</Content>
+        <Content
+          href=""
+          selected={filter === statusFilters.all}
+          onClick={() => handleFilterChange(statusFilters.all)}
+        >
+          Show All
+        </Content>
+        <Content
+          href=""
+          selected={filter === statusFilters.follow}
+          onClick={() => handleFilterChange(statusFilters.follow)}
+        >
+          Follow
+        </Content>
+        <Content
+          href=""
+          selected={filter === statusFilters.following}
+          onClick={() => handleFilterChange(statusFilters.following)}
+        >
+          Following
+        </Content>
       </BoxContentDropdown>
     </WrapperDropdown>
   );

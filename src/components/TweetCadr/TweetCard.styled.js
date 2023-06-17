@@ -7,7 +7,6 @@ export const Container = styled.section`
   align-items: center;
   gap: 20px;
   width: 100%;
-  
 `;
 
 export const Box = styled.div`
@@ -22,9 +21,9 @@ export const Box = styled.div`
     #5736a3 54.28%,
     #4b2a99 78.99%
   );
-  :hover{
-    box-shadow: 5px 0 2px #5CD3A8 
-  } 
+  :hover {
+    box-shadow: 5px 0 2px #5cd3a8;
+  }
 `;
 
 export const BoxLogo = styled.div`
@@ -71,9 +70,9 @@ export const BoxUser = styled.div`
   margin: 0;
 `;
 export const BoxName = styled.div`
-position: relative;
-left: 0;
-top: -40px;
+  position: relative;
+  left: 0;
+  top: -40px;
 `;
 
 export const Name = styled.span`
@@ -81,14 +80,15 @@ export const Name = styled.span`
   font-weight: 500;
   margin-top: 4px;
   font-style: italic;
-  
 `;
 export const BoxCard = styled.div`
- margin-bottom: 20px;
+  margin-bottom: 20px;
 `;
 export const BoxBtn = styled.div`
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 `;
 
 export const CardWrapper = styled.div`
@@ -96,7 +96,7 @@ export const CardWrapper = styled.div`
   text-align: center;
 `;
 
-export const Card = styled.li`
+export const Card = styled.p`
   text-transform: uppercase;
   font-weight: 500;
   font-size: 18px;
@@ -106,7 +106,26 @@ export const Card = styled.li`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.input`
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  :active {
+    background-color: #5cd3a8;
+  }
+  :disabled{
+    background-color: #ebd8ff;
+  }
+`;
+export const Label = styled.label`
+  user-select: none;
+  display: inline-block;
+  margin: 0 5px 0 0;
+  /* position: relative; */
+`;
+export const NameBtn = styled.span`
   width: 196px;
   height: 50px;
   padding: 14px 28px;
@@ -118,10 +137,16 @@ export const Button = styled.button`
   line-height: 1.22;
   text-transform: uppercase;
   border-radius: 10px;
+  text-shadow: none;
+  color: #373737;
+  cursor: pointer;
   :hover,
   :focus,
-  :active{
-    background-color: #5CD3A8;
+  :active {
+    background-color: #5cd3a8;
+  }
+  :disabled{
+    background-color: #ebd8ff;
   }
 `;
 

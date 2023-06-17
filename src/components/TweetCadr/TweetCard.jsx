@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+// { useState }
+
 // import PropTypes from "prop-types";
 import {
-  Container,
   Box,
   CardWrapper,
   BoxLogo,
@@ -14,76 +15,81 @@ import {
   Decor,
   BoxUser,
   Name,
-  BoxName
+  BoxName,
+  NameBtn
 } from "./TweetCard.styled";
-// import users from "../../serves/users.json";
 import { Logo } from "components/Logo/Logo";
 import { Avatar } from "../Avatar/Avatar";
 import picture from "../../images/picture.png";
 import decor from "images/decor.png";
-// import avatar from "images/avatar_default.png";
-import { selectAllTweets } from "redux/selectors";
-import { useSelector } from "react-redux";
+import { toggleFollow } from "../../redux/operation";
+// import { selectAllTweets } from "redux/selectors";
+import { useDispatch } from "react-redux";
 
-export const TweetCard = () => {
-  const [isFollower, setFollower] = useState(false);
-  // const [followers, setFollowers] = useState();
-  const users = useSelector(selectAllTweets);
-  // useEffect(() => {
-  //   document.p = `${users.followers} FOLLOWERS`;
-  // });
-//  console.log(users);
-  const handleChange = () => {
-    if (!isFollower) {
-      setFollower(true);
-    } else {
-      setFollower(false);
+export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
+  // console.log(name, tweets, followers, avatar, id);
+//  const value = followers.toLocalString();
+//  console.log(value);
+  const dispatch = useDispatch();
+
+  // const handleIncrement = evt => {
+  //   const newFollowers = followers + 1;
+  //   dispatch(fetchUpdateFollowers(newFollowers));
+  // };
+  // const handleDecrement = evt => {
+  //   const newFollowers = followers - 1;
+  //   dispatch(fetchUpdateFollowers(newFollowers));
+  // };
+
+  const handleToggle = () => {
+    try {
+      const tweets = dispatch(toggleFollow(id));
+      if (!tweets) {
+        return;
+      }
+      
+      console.log(followers);
+    } catch (err) {
+      console.log(err.message);
     }
-  };  
+  };
 
   return (
-    <Container>
-      {users.map(user => {
-        return (
-          <Box key={user.id}>
-            <BoxLogo>
-              <Logo />
-            </BoxLogo>
-            <ImageWraper>
-              <img
-                src={picture}
-                alt="backgraund"
-                width="308"
-                height="168"
-              ></img>
-            </ImageWraper>
-            <CardWrapper>
-              <BoxUser>
-                <BoxAvatar>
-                  <Avatar avatar={user.avatar} />
-                </BoxAvatar>
-                <Decor src={decor} alt="decor" width="380" height="8"></Decor>
-                <BoxName>
-                  <Name>{user.user}</Name>
-                </BoxName>
-                <BoxCard>
-                  <ul>
-                    <Card>{user.tweets} TWEETS</Card>
-                    <Card >
-                      {user.followers} FOLLOWERS
-                    </Card>
-                  </ul>
-                </BoxCard>
-                <BoxBtn>
-                  <Button id={user.id} type="button" onClick={handleChange} >
-                    {isFollower ? "Following" : "Follow"}
-                  </Button>
-                </BoxBtn>
-              </BoxUser>
-            </CardWrapper>
-          </Box>
-        );
-      })}
-    </Container>
+    <>
+      <Box>
+        <BoxLogo>
+          <Logo />
+        </BoxLogo>
+        <ImageWraper>
+          <img src={picture} alt="backgraund" width="308" height="168"></img>
+        </ImageWraper>
+
+        <CardWrapper>
+          <BoxUser>
+            <BoxAvatar>
+              <Avatar avatar={avatar} />
+            </BoxAvatar>
+            <Decor src={decor} alt="decor" width="380" height="8"></Decor>
+            <BoxName>
+              <Name>{name}</Name>
+            </BoxName>
+            <BoxCard>
+              <Card>{tweets} TWEETS</Card>
+              <Card >{followers} FOLLOWERS</Card>
+            </BoxCard>
+            <BoxBtn>
+              <label>
+                <Button
+                  type="checkbox"
+                  // checked={following}
+                  onChange={handleToggle}
+                ></Button>
+                <NameBtn>Follow</NameBtn>
+              </label>
+            </BoxBtn>
+          </BoxUser>
+        </CardWrapper>
+      </Box>
+    </>
   );
 };
