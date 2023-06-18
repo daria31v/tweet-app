@@ -33,16 +33,16 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
       setIsActive(true);
       const update = followers + 1;
       dispatch(fetchUpdateFollowers({ id, update }));
-    }
-    console.log(isActive);
+    }    
     if (isActive === true) {
       setIsActive(false);
       const update = followers - 1;
       dispatch(fetchUpdateFollowers({ id, update }));
-    }
-    console.log(isActive);
+    }       
   };
-
+  const value = +followers;
+  const formatingValue = value.toLocaleString('en-US');
+    
   return (
     <>
       <Box>
@@ -64,7 +64,7 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
             </BoxName>
             <BoxCard>
               <Card>{tweets} TWEETS</Card>
-              <Card>{followers} FOLLOWERS</Card>
+              <Card>{formatingValue} FOLLOWERS</Card>
             </BoxCard>
             <BoxBtn>
               <Label>

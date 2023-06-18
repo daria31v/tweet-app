@@ -9,7 +9,7 @@ export const fetchAllTweets = createAsyncThunk(
     try {
       const response = await axios.get(`/users/?page=${page}&limit=3`);
       const tweets = response.data;
-      return tweets;      
+      return tweets;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -19,32 +19,13 @@ export const fetchAllTweets = createAsyncThunk(
 export const fetchUpdateFollowers = createAsyncThunk(
   "tweets/updateFollowings",
   async (data, thunkAPI) => {
-    // console.log(data);
     try {
-      const {id, update} = data
+      const { id, update } = data;
       const body = { followers: update };
-      // console.log(body);
-      // console.log(update);
       const response = await axios.put(`/users/${id}`, body);
-      console.log(response.data.followers);
-      // const followers = response.data.followers;
-      // return followers;
-      return response.data
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
-
-// export const existContacts = createAsyncThunk(
-//   'contacts/existingContacts',
-//   async (data, thunkAPI) => {
-//     try {
-//       const body = { name: data.name, number: data.number };
-//       const response = await axios.patch(`/contacts/${data.id}`, body);
-//       return response.data;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
