@@ -7,10 +7,10 @@ export const tweetsSlice = createSlice({
     item: [
       {
         user: "",
-        tweets: "",
-        followers: "",
+        tweets: null,
+        followers: null,
         avatar: "",
-        id: ""
+        id: null
       }
     ],
     isLoading: false,

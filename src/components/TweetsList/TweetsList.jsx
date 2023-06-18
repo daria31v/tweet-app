@@ -9,7 +9,8 @@ export const TweetsList = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const users = useSelector(selectAllTweets);
-  console.log(users);
+  // console.log(users);
+  // const followers = users.followers.toLocaleString()
   // console.log(error);
   return (
     <Wrapper>

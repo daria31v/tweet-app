@@ -25,25 +25,22 @@ import { fetchUpdateFollowers } from "../../redux/operation";
 import { useDispatch } from "react-redux";
 
 export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
-
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
 
   const handleToggle = () => {
-     try {
-      if (isActive === false) {
-        setIsActive(true);
-        const update = followers + 1;
-        dispatch(fetchUpdateFollowers({ id, update }));
-      }
-      if (isActive === true) {
-        setIsActive(false);
-        const update = followers - 1;
-        dispatch(fetchUpdateFollowers({ id, update }));
-      }
-    } catch (err) {
-      alert('Somthing', err.message);
+    if (isActive === false) {
+      setIsActive(true);
+      const update = followers + 1;
+      dispatch(fetchUpdateFollowers({ id, update }));
     }
+    console.log(isActive);
+    if (isActive === true) {
+      setIsActive(false);
+      const update = followers - 1;
+      dispatch(fetchUpdateFollowers({ id, update }));
+    }
+    console.log(isActive);
   };
 
   return (
@@ -71,10 +68,7 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
             </BoxCard>
             <BoxBtn>
               <Label>
-                <Button
-                  type="radio"
-                  onChange={handleToggle}
-                ></Button>
+                <Button type="checkbox" onChange={handleToggle}></Button>
                 <NameBtn isActive={isActive}>
                   {isActive ? "Following" : "Follow"}
                 </NameBtn>
