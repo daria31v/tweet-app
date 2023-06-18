@@ -5,40 +5,11 @@ axios.defaults.baseURL = "https://648c60758620b8bae7eccdd6.mockapi.io/api/";
 
 export const fetchAllTweets = createAsyncThunk(
   "tweets/fetchAll",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const response = await axios.get(`/users`);
-      // console.log(response.data);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-export const fetchByIdUser = createAsyncThunk(
-  "tweets/fetchById",
-  async (id, thunkAPI) => {
-    try {
-      const response = await axios.put(`/users/${id}`);
-      // console.log(response.data);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-export const toggleFollow = createAsyncThunk(
-  "tweets/follow",
-  async (id, thunkAPI) => {
-    try {
-      const response = await axios.get(`/users/${id}`);
-      // const followers = response.data.followers;
-      // console.log(response.data);
-      const data = response.data;
-      // console.log(data.followers);
-      const follow = data.followers;
-      return follow;
+      const response = await axios.get(`/users/?page=${page}&limit=3`);
+      const tweets = response.data;
+      return tweets;      
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -48,15 +19,17 @@ export const toggleFollow = createAsyncThunk(
 export const fetchUpdateFollowers = createAsyncThunk(
   "tweets/updateFollowings",
   async (data, thunkAPI) => {
-    console.log(data);
+    // console.log(data);
     try {
       const {id, update} = data
       const body = { followers: update };
       // console.log(body);
-      console.log(update);
+      // console.log(update);
       const response = await axios.put(`/users/${id}`, body);
-      console.log(response.data);
-      return response.data;
+      console.log(response.data.followers);
+      // const followers = response.data.followers;
+      // return followers;
+      return response.data
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

@@ -3,7 +3,9 @@ import { statusFilters } from './filter';
 
 export const selectAllTweets = state => state.tweets.item;
 // export const selectFollowers = state => state.tweets.item.followers;
-export const selectStatusFilter = state => state.status;
+export const selectStatusFilter = state => 
+state.filter.status;
+// console.log(state.filter.status);
 export const selectIsLoading = state => state.tweets.isLoading;
 export const selectError = state => state.tweets.error;
 

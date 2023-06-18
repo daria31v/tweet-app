@@ -1,6 +1,4 @@
-import React from "react";
-// { useState }
-
+import React, { useState } from "react";
 // import PropTypes from "prop-types";
 import {
   Box,
@@ -16,44 +14,35 @@ import {
   BoxUser,
   Name,
   BoxName,
-  NameBtn
+  NameBtn,
+  Label
 } from "./TweetCard.styled";
 import { Logo } from "components/Logo/Logo";
 import { Avatar } from "../Avatar/Avatar";
 import picture from "../../images/picture.png";
 import decor from "images/decor.png";
-import { toggleFollow } from "../../redux/operation";
 import { fetchUpdateFollowers } from "../../redux/operation";
-// import { selectAllTweets } from "redux/selectors";
 import { useDispatch } from "react-redux";
 
 export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
- const dispatch = useDispatch();
 
-  // const handleIncrement = evt => {
-  //   const newFollowers = followers + 1;
-  //   dispatch(fetchUpdateFollowers(newFollowers));
-  // };
-  // const handleDecrement = evt => {
-  //   const newFollowers = followers - 1;
-  //   dispatch(fetchUpdateFollowers(newFollowers));
-  // };
+  const dispatch = useDispatch();
+  const [isActive, setIsActive] = useState(false);
 
   const handleToggle = () => {
-    try {
-      const tweets = dispatch(toggleFollow(id));
-      if (!tweets) {
-        return;
+     try {
+      if (isActive === false) {
+        setIsActive(true);
+        const update = followers + 1;
+        dispatch(fetchUpdateFollowers({ id, update }));
       }
-      console.log(followers);
-
-      const update = followers + 1;
-    
-      dispatch(fetchUpdateFollowers({id, update}));
-
-
+      if (isActive === true) {
+        setIsActive(false);
+        const update = followers - 1;
+        dispatch(fetchUpdateFollowers({ id, update }));
+      }
     } catch (err) {
-      console.log(err.message);
+      alert('Somthing', err.message);
     }
   };
 
@@ -78,17 +67,18 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
             </BoxName>
             <BoxCard>
               <Card>{tweets} TWEETS</Card>
-              <Card >{followers} FOLLOWERS</Card>
+              <Card>{followers} FOLLOWERS</Card>
             </BoxCard>
             <BoxBtn>
-              <label>
+              <Label>
                 <Button
-                  type="checkbox"
-                  // checked={following}
+                  type="radio"
                   onChange={handleToggle}
                 ></Button>
-                <NameBtn>Follow</NameBtn>
-              </label>
+                <NameBtn isActive={isActive}>
+                  {isActive ? "Following" : "Follow"}
+                </NameBtn>
+              </Label>
             </BoxBtn>
           </BoxUser>
         </CardWrapper>

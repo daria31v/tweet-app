@@ -80,6 +80,7 @@ export const Name = styled.span`
   font-weight: 500;
   margin-top: 4px;
   font-style: italic;
+
 `;
 export const BoxCard = styled.div`
   margin-bottom: 20px;
@@ -129,7 +130,6 @@ export const NameBtn = styled.span`
   width: 196px;
   height: 50px;
   padding: 14px 28px;
-  background-color: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
   font-weight: 600;
@@ -141,14 +141,12 @@ export const NameBtn = styled.span`
   color: #373737;
   cursor: pointer;
   :hover,
-  :focus,
-  :active {
+  :focus {
     background-color: #5cd3a8;
   }
-  :disabled{
-    background-color: #ebd8ff;
-  }
-`;
+  background-color: ${props => props.isActive ? '#5cd3a8':'#ebd8ff'    };
+  `;
+
 
 export const Decor = styled.img`
   position: relative;

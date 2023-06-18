@@ -13,7 +13,7 @@ import { statusFilters } from "redux/filter";
 export const Dropdown = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectStatusFilter);
-  
+  // console.log(filter);
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
 
   const [isHidden, setHidden] = useState(true);

@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { statusFilters } from "./filter";
+// import { statusFilters } from "./filter";
 
 const filtersInitialState = {
-  status: statusFilters.all,
+  // status: statusFilters.all,
+  status: {
+    follow: "follow",
+    following: "following",
+}
 };
 
 const filtersSlice = createSlice({
