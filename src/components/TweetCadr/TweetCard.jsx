@@ -23,14 +23,12 @@ import { Avatar } from "../Avatar/Avatar";
 import picture from "../../images/picture.png";
 import decor from "images/decor.png";
 import { toggleFollow } from "../../redux/operation";
+import { fetchUpdateFollowers } from "../../redux/operation";
 // import { selectAllTweets } from "redux/selectors";
 import { useDispatch } from "react-redux";
 
 export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
-  // console.log(name, tweets, followers, avatar, id);
-//  const value = followers.toLocalString();
-//  console.log(value);
-  const dispatch = useDispatch();
+ const dispatch = useDispatch();
 
   // const handleIncrement = evt => {
   //   const newFollowers = followers + 1;
@@ -47,8 +45,13 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
       if (!tweets) {
         return;
       }
-      
       console.log(followers);
+
+      const update = followers + 1;
+    
+      dispatch(fetchUpdateFollowers({id, update}));
+
+
     } catch (err) {
       console.log(err.message);
     }

@@ -48,9 +48,14 @@ export const toggleFollow = createAsyncThunk(
 export const fetchUpdateFollowers = createAsyncThunk(
   "tweets/updateFollowings",
   async (data, thunkAPI) => {
+    console.log(data);
     try {
-      const body = { followers: data.followers };
-      const response = await axios.put(`/users/${data.id}`, body);
+      const {id, update} = data
+      const body = { followers: update };
+      // console.log(body);
+      console.log(update);
+      const response = await axios.put(`/users/${id}`, body);
+      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -58,28 +63,15 @@ export const fetchUpdateFollowers = createAsyncThunk(
   }
 );
 
-// fetch('https://PROJECT_TOKEN.mockapi.io/tasks/1', {
-//   method: 'PUT', // or PATCH
-//   headers: {'content-type':'application/json'},
-//   body: JSON.stringify({completed: true})
-// }).then(res => {
-//   if (res.ok) {
-//       return res.json();
-//   }
-//   // handle error
-// }).then(task => {
-//   // Do something with updated task
-// }).catch(error => {
-//   // handle error
-// })
-// export const updateUser = createAsyncThunk(
-//   'auth/updateUser',
-//   async (body, thunkAPI) => {
+// export const existContacts = createAsyncThunk(
+//   'contacts/existingContacts',
+//   async (data, thunkAPI) => {
 //     try {
-//       const data = await updateFetch(body);
-//       console.log(data);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error);
+//       const body = { name: data.name, number: data.number };
+//       const response = await axios.patch(`/contacts/${data.id}`, body);
+//       return response.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
 //     }
 //   }
+// );

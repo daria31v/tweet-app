@@ -24,6 +24,8 @@ export const tweetsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchAllTweets.fulfilled, (state, action) => {
+        console.log(action.payload);
+        // console.log(state.item);
         state.isLoading = false;
         state.error = null;
         state.item = action.payload;
@@ -44,12 +46,25 @@ export const tweetsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-    .addCase(fetchUpdateFollowers.pending, (state) => state)
+    .addCase(fetchUpdateFollowers.pending, (state) => {
+      state.isLoading = true;
+    })
     .addCase(fetchUpdateFollowers.fulfilled, (state, action) => {
+      console.log(action.payload.followers);
+      console.log(state.item);
+
       state.isLoading = false;
       state.error = null;
-      state.item = action.payload.followers;
-    })
+       const index = state.item.filter(
+          user => user.id === action.payload.id
+        );
+      state.item.splice(index, 2, action.payload);
+
+      
+      //  
+      //   state.items.splice(index, 1, action.payload);
+      })
+         
     .addCase(fetchUpdateFollowers.rejected, (state) => state)
 });
 
