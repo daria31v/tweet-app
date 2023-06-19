@@ -11,7 +11,7 @@ export const tweetsSlice = createSlice({
         followers: null,
         avatar: "",
         id: null
-      }
+      }      
     ],
     isLoading: false,
     error: null

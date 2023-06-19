@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import PropTypes from "prop-types";
 import {
   Box,
@@ -23,26 +23,56 @@ import picture from "../../images/picture.png";
 import decor from "images/decor.png";
 import { fetchUpdateFollowers } from "../../redux/operation";
 import { useDispatch } from "react-redux";
-
 export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
+  const [state, setState] = useState({});
+  const [status, setStatus] = useState("follow");
 
-  const handleToggle = () => {
-    if (isActive === false) {
-      setIsActive(true);
-      const update = followers + 1;
-      dispatch(fetchUpdateFollowers({ id, update }));
-    }    
+  useEffect(() => {
+    const store = localStorage.getItem("state");
+    console.log(store);
+    if(store){
+      setState(store)
+    }
+  }, []);
+
+  const handleToggle = event => {
+    
+    setState((prevState) => ({
+      ...prevState,
+      state,
+    }));
+  
+
+    setStatus("following");
+    setIsActive(true);
+    const update = followers + 1;
+    const data = { isActive: isActive, status: status, select: id };
+    dispatch(fetchUpdateFollowers({ id, update }));
+    console.log(data);
+    localStorage.setItem("state", JSON.stringify([data]));
+
     if (isActive === true) {
-      setIsActive(false);
       const update = followers - 1;
       dispatch(fetchUpdateFollowers({ id, update }));
-    }       
+      setIsActive(false);
+      setStatus("follow");
+      const data = { isActive: isActive, status: status, select: id };
+      console.log(data);
+      localStorage.removeItem("state", data);
+    }
   };
+  useEffect(() => {
+    const data = { isActive: isActive, status: status, select: id };
+    console.log(data);
+    localStorage.setItem("state", JSON.stringify(data));
+  }, [status, id, isActive]);
+
+
   const value = +followers;
-  const formatingValue = value.toLocaleString('en-US');
-    
+  const formatingValue = value.toLocaleString("en-US");
+
   return (
     <>
       <Box>
@@ -68,7 +98,14 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
             </BoxCard>
             <BoxBtn>
               <Label>
-                <Button type="checkbox" onChange={handleToggle}></Button>
+                <Button
+                  type="checkbox"
+                  name={id}
+                  // checked={false}
+                  onChange={handleToggle}
+                  status={status}
+                  isActive={isActive}
+                ></Button>
                 <NameBtn isActive={isActive}>
                   {isActive ? "Following" : "Follow"}
                 </NameBtn>

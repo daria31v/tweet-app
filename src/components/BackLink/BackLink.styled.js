@@ -10,7 +10,6 @@ export const StyledLink = styled(Link)`
   color:  #EBD8FF;
   text-decoration: none;
   font-weight: 500;
-  text-transform: uppercase;
   :hover,
   :focus {
     color: #edbc2b;;

@@ -2,14 +2,12 @@ import { createSelector } from '@reduxjs/toolkit';
 import { statusFilters } from './filter';
 
 export const selectAllTweets = state => state.tweets.item;
-// export const selectFollowers = state => state.tweets.item.followers;
-export const selectStatusFilter = state => 
-state.filter.status;
-// console.log(state.filter.status);
+export const selectStatusFilter = state => state.filter;
+// export const selectChooseTweets = state => state.filter.items;
 export const selectIsLoading = state => state.tweets.isLoading;
 export const selectError = state => state.tweets.error;
 
-export const selectVisibleTasks = createSelector(
+export const getChooseTweets = createSelector(
    
     [selectAllTweets, selectStatusFilter],
     (users, statusFilter) => {

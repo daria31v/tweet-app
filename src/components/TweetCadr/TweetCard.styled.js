@@ -144,7 +144,7 @@ export const NameBtn = styled.span`
   :focus {
     background-color: #5cd3a8;
   }
-  background-color: ${props => props.isActive ? '#5cd3a8':'#ebd8ff'    };
+  background-color: ${props => props.isActive ? '#5cd3a8':'#ebd8ff'};
   `;
 
 

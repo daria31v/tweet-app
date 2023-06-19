@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
 import { fetchAllTweets } from "redux/operation";
 
+
 const Home = lazy(() => import("./pages/Home/Home"));
 const Tweets = lazy(() => import("./pages/Tweets/Tweets"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
@@ -15,7 +16,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(fetchAllTweets());
   }, [dispatch]);
-
+ 
 
   return (
     <Routes>

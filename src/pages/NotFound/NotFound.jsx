@@ -1,11 +1,21 @@
+import { AppBar } from 'components/AppBar/AppBar';
 import React from 'react';
-import { Link} from 'react-router-dom'
-
+import { Title, Text, WraperImg } from './NotFound.styled';
+import picture from '../../images/arrow-yellow.png'
 const NotFound = () => {
     return( 
     <>
-    <h2>No such page exists!</h2>
-    <Link to="/">Home</Link>
+    <AppBar/>
+    <Title>No such page exists!</Title>
+    <Text>please click on HOME</Text>
+    <WraperImg>
+              <img
+                src={picture}
+                alt="backgraund"
+                width="308"
+                height="100"
+              ></img>
+        </WraperImg>
     </>
     );
   };

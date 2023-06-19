@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Dropdown } from "../../components/Dropdown/Dropdown";
-import { useSelector } from "react-redux";
 import { TweetsList } from "../../components/TweetsList/TweetsList";
-import { selectAllTweets } from "redux/selectors";
 import { useLocation } from "react-router-dom";
 import { BackLink } from "../../components/BackLink/BackLink";
 import { fetchAllTweets } from "../../redux/operation";
@@ -22,18 +19,17 @@ const Tweets = () => {
   const backLinkHref = location.state?.from ?? "/";
   const [page, setPage] = useState(1);
   const [isVisibleBtn, setVisibleBtn] = useState(true);
-  const btn = document.querySelector("#loadMore");
+  const btn = document.getElementById("loadMore");
 
   const dispatch = useDispatch();
   
-  dispatch(fetchAllTweets(page));
-  
+  dispatch(fetchAllTweets(page));  
 
   const handleLoadMore = () => {
     try {
       const nextPage = setPage(prevState => prevState + 1);
       dispatch(fetchAllTweets(nextPage));
-      
+            
       if (page === 7) {
         setVisibleBtn(false);
         btn.style.display = "none";
