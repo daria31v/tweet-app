@@ -1,11 +1,9 @@
-import { AppBar } from 'components/AppBar/AppBar';
 import React from 'react';
 import { Title, Text, WraperImg } from './NotFound.styled';
 import picture from '../../images/arrow-yellow.png'
 const NotFound = () => {
     return( 
     <>
-    <AppBar/>
     <Title>No such page exists!</Title>
     <Text>please click on HOME</Text>
     <WraperImg>
