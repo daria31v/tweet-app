@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import PropTypes from "prop-types";
+
+import PropTypes from "prop-types";
 import {
   Box,
   CardWrapper,
@@ -23,52 +24,51 @@ import picture from "../../images/picture.png";
 import decor from "images/decor.png";
 import { fetchUpdateFollowers } from "../../redux/operation";
 import { useDispatch } from "react-redux";
+
+
 export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
-  const [state, setState] = useState({});
+  const [state, setState] = useState([]);
   const [status, setStatus] = useState("follow");
 
+  const addTweet = (select, isActive, status) => {
+    setState(prev => [...prev, { select, isActive, status }]);
+  };
+  const deleteTweet = (select, isActive, status) => {
+    setState(prev => prev.filter(tweets => tweets.status !== status));
+  };
+  
   useEffect(() => {
-    const store = localStorage.getItem("state");
-    console.log(store);
-    if(store){
-      setState(store)
+    const newTweets = localStorage.getItem("state");
+    if (newTweets !== null) {
+      const parsedTweets = JSON.parse(newTweets);
+      setState(parsedTweets);
+    } else {
+      setState();
     }
   }, []);
 
-  const handleToggle = event => {
-    
-    setState((prevState) => ({
-      ...prevState,
-      state,
-    }));
-  
-
+  const handleToggle = () => {
     setStatus("following");
     setIsActive(true);
     const update = followers + 1;
     const data = { isActive: isActive, status: status, select: id };
+    addTweet(data);
     dispatch(fetchUpdateFollowers({ id, update }));
-    console.log(data);
-    localStorage.setItem("state", JSON.stringify([data]));
 
     if (isActive === true) {
       const update = followers - 1;
       dispatch(fetchUpdateFollowers({ id, update }));
       setIsActive(false);
       setStatus("follow");
-      const data = { isActive: isActive, status: status, select: id };
-      console.log(data);
-      localStorage.removeItem("state", data);
+      const tweet = { isActive: isActive, status: status, select: id };
+      deleteTweet(tweet);
     }
   };
   useEffect(() => {
-    const data = { isActive: isActive, status: status, select: id };
-    console.log(data);
-    localStorage.setItem("state", JSON.stringify(data));
-  }, [status, id, isActive]);
-
+    localStorage.setItem("state", JSON.stringify(state));
+  }, [state]);
 
   const value = +followers;
   const formatingValue = value.toLocaleString("en-US");
@@ -82,7 +82,6 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
         <ImageWraper>
           <img src={picture} alt="backgraund" width="308" height="168"></img>
         </ImageWraper>
-
         <CardWrapper>
           <BoxUser>
             <BoxAvatar>
@@ -101,7 +100,6 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
                 <Button
                   type="checkbox"
                   name={id}
-                  // checked={false}
                   onChange={handleToggle}
                   status={status}
                   isActive={isActive}
@@ -117,3 +115,12 @@ export const TweetCard = ({ name, tweets, followers, avatar, id }) => {
     </>
   );
 };
+
+TweetCard.prototype = {
+  name: PropTypes.string.isRequired,
+  tweets: PropTypes.number.isRequired,
+  followers: PropTypes.number.isRequired,
+  avatar: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+}
+

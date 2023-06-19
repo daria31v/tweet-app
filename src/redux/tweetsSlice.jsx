@@ -22,8 +22,6 @@ export const tweetsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchAllTweets.fulfilled, (state, action) => {
-        // console.log(action.payload);
-        // console.log(state.item);
         state.isLoading = false;
         state.error = null;
         state.item = action.payload;

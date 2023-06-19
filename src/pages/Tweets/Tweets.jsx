@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown } from "../../components/Dropdown/Dropdown";
+import PropTypes from "prop-types";
 import { TweetsList } from "../../components/TweetsList/TweetsList";
 import { useLocation } from "react-router-dom";
 import { BackLink } from "../../components/BackLink/BackLink";
@@ -22,14 +22,14 @@ const Tweets = () => {
   const btn = document.getElementById("loadMore");
 
   const dispatch = useDispatch();
-  
-  dispatch(fetchAllTweets(page));  
+
+  dispatch(fetchAllTweets(page));
 
   const handleLoadMore = () => {
     try {
       const nextPage = setPage(prevState => prevState + 1);
       dispatch(fetchAllTweets(nextPage));
-            
+
       if (page === 7) {
         setVisibleBtn(false);
         btn.style.display = "none";
@@ -44,7 +44,6 @@ const Tweets = () => {
       <Section>
         <BoxTweets>
           <BackLink to={backLinkHref} />
-          <Dropdown />
           <Title>TWEETS OUR USERS</Title>
         </BoxTweets>
         <TweetsList />
@@ -62,3 +61,8 @@ const Tweets = () => {
 };
 
 export default Tweets;
+
+Tweets.prototype = {
+  isVisibleBtn: PropTypes.bool.isRequired,
+  handleLoadMore: PropTypes.func.isRequired
+}.isRequired;

@@ -32,6 +32,4 @@ export const TweetsList = () => {
   );
 };
 
-// TweetsList.protoType = {
-//   tweets: PropTypes.array.isRequired
-// }.isRequired;
+
