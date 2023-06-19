@@ -22,7 +22,7 @@ export const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="tweets" element={<Tweets />} />                 
-        <Route path="*" element={<NotFound />} />
+        <Route path="404" element={<NotFound />} />
       </Route>
     </Routes>
   );
