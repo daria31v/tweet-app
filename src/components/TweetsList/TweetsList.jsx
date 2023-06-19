@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import { Card, ListCards, Wrapper } from "./TweetsList.styled";
 import { TweetCard } from "../TweetCadr/TweetCard";
 import { useSelector } from "react-redux";

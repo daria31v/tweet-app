@@ -1,6 +1,6 @@
 import { Logo } from "../Logo/Logo";
 import React from 'react';
-// import { Dropdown } from "../Dropdown/Dropdown";
+
 
 import { Container, Section, Nav, Cloud, Box } from "./AppBar.styled";
 
