@@ -27,7 +27,7 @@ Copy code
 npm run deploy
 The app will be deployed to the following homepage: https://daria31v.github.io/tweet-app
 
-Dependencies
+Dependencies:
 "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
 "@reduxjs/toolkit": "^1.9.5"
 "@testing-library/jest-dom": "^5.16.5"
@@ -73,8 +73,8 @@ Development:
 Contributing
 Contributions to the Tweets App are welcome! If you find a bug or want to suggest an enhancement, please submit an issue or create a pull request with your proposed changes.
 
-License
+License.
 This project is licensed under the ISC License.
 
-Contact
+Contact.
 If you have any questions or want to reach out about this project, you can contact the project maintainer at daria31v@gmail.com
