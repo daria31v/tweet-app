@@ -5,7 +5,7 @@ This project was bootstrapped with Create React App.
 Description
 Tweets App is a web application that allows users to post and view tweets. Users can sign up, log in, compose tweets, and see a timeline of tweets from other users.
 
-Installation
+Installation.
 To run the Tweets App locally on your machine, follow these steps:
 
 Clone the repository: git clone https://github.com/daria31v/tweet-app.git
